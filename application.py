@@ -102,7 +102,7 @@ def register():
         password = request.form.get("password")
         res = checkForRestration(db, username, password)
         if res != False:
-            return render_template("search.html", errorMsg=res)
+            return render_template("register.html", errorMsg=res)
     
         createNewAccount(db, username, password)
         set_session(session, username)
