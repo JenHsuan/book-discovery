@@ -1,0 +1,25 @@
+{% extends "layout_before_login.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='cover.css')}}">
+{% endblock %}
+    
+{% block body %}
+<script>
+</script>
+<div class="container" >
+    <div class="row" id = "cover-container">    
+      <div id = "cover-greeting">
+          <span>Books</span>
+          <span id="highlight">Discovery</span>
+          <hr>
+          <div id="subtitle">Discover your favorate books with ISBN, title, and author</div>
+      </div>
+      <div>
+        <div class="error">
+            {{errorMsg}}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

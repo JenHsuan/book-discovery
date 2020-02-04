@@ -1,0 +1,53 @@
+#cover-container {
+  margin-top: 10%;
+  margin-right: 20%;
+  margin-left: 20%;
+  background-color: #F4F1EA;
+  border-radius: 5px;
+  border: black;
+  border-width: 2px; }
+
+#cover-greeting {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-weight: 200;
+  font-size: 48px; }
+  #cover-greeting #subtitle {
+    font-size: 18px;
+    font-weight: 300; }
+  #cover-greeting span {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+  #cover-greeting #highlight {
+    font-weight: 400;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+
+@media screen and (max-width: 600px) {
+  #cover-container {
+    margin-top: 15%;
+    margin-right: 10%;
+    margin-left: 10%; }
+
+  #cover-greeting {
+    font-size: 28px; }
+    #cover-greeting #subtitle {
+      font-size: 12px;
+      font-weight: 300; } }
+body {
+  background-image: url("../static/img/books-discovery.png");
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+/*# sourceMappingURL=cover.css.map */

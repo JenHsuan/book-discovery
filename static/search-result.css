@@ -1,0 +1,19 @@
+#search-result-container {
+  margin-top: 10%;
+  margin-right: 20%;
+  margin-left: 20%;
+  background-color: #F4F1EA;
+  border-radius: 5px;
+  border: black;
+  border-width: 2px; }
+  #search-result-container .subtitle {
+    font-weight: 500;
+    font-size: 18px; }
+  #search-result-container .item {
+    font-weight: 300;
+    font-size: 14px; }
+
+.container {
+  margin-bottom: 200px; }
+
+/*# sourceMappingURL=search-result.css.map */

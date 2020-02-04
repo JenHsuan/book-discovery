@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="Book-Discovery for CS50w" >
+    <meta property="og:url" content="">
+    <meta property="og:image" content="{{url_for('static', filename='img/Book-Discovery.png')}}">
+    <meta property="og:description" content="Discover your favorate books with ISBN, title, and author" >
+    <title>Book-Discovey</title>
+    <link rel="icon" href="{{url_for('static', filename='img/icon.png')}}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='common.css')}}">
+    {% block header %}
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="background-white">
+        <nav class="mobile-navbar navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              </div>
+          
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li><a href="/login">Sign in</a></li>
+                  <li><a href="/register">Sign up</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <div id="float-navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/login">Sign in</a></li>
+                <br>
+                <li><a href="/register">Sign up</a></li>
+            </ul>
+        </div>
+        {% block body %}
+        {% endblock %}
+    </div>
+    <nav id="common-footer" class="navbar navbar-dark navbar-fixed-bottom" >
+        <div class="row common-footer-row">
+            <div id="follow" class="col-md-4 col-xs-4">
+                <p id="text">Follow me</p>
+                <span class="btn-o">
+                    <a href="https://twitter.com/JenHsuanHsieh">
+                        <img src="{{url_for('static', filename='img/twitter.png')}}" alt="twitter">
+                    </a>
+                </span>
+                <span class="btn-o">
+                    <a href="https://www.instagram.com/seanhsgogo/">
+                        <img src="{{url_for('static', filename='img/instagram.png')}}" alt="instagram">
+                    </a>
+                </span>
+                <span class="btn-o">
+                    <a href="https://www.facebook.com/imalayman/">
+                        <img src="{{url_for('static', filename='img/facebook.png')}}" alt="facebook">
+                    </a>
+                </span>
+                <span class="btn-o">
+                    <a href="https://medium.com/a-layman">
+                        <img src="{{url_for('static', filename='img/github.png')}}" alt="github">
+                    </a>
+                </span>
+                <span class="btn-o">
+                    <a href="https://www.linkedin.com/in/jen-hsuan-hsieh-6a13347a/">
+                        <img src="{{url_for('static', filename='img/linkedin.png')}}" alt="linkedin">
+                    </a>
+                </span>
+                <span class="btn-o">
+                    <a href="https://www.youtube.com/channel/UCQz6a3i_kmuuYXi0hOd8EWQ">
+                        <img src="{{url_for('static', filename='img/youtube.png')}}" alt="youtube">
+                    </a>
+                </span>
+            </div>
+            <div id="copyright" class="col-md-4 col-xs-12">
+                <br>
+                <p>@2020 Jen-Hsuan Hsieh. All right reserved.</p>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends "layout_after_login.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='search-result.css')}}">
+{% endblock %}
+    
+{% block body %}
+<script>
+$(document).ready(function(e){
+  $('.dropdown-menu').find('a').click(function(e) {
+  e.preventDefault();
+  var param = $(this).attr("href").replace("#","");
+  var concept = $(this).text();
+  $('.search-panel span#search_concept').text(concept);
+  $('.input-group #grade').val(param);
+});
+});
+</script>
+<div class="container">
+  <div class="row" id = "search-result-container">    
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <h1 id = "search-result-title">
+        {{search_result["title"]}}
+      </h1>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="subtitle">Information</span>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="item-subtitle">Author:</span>
+      <span class="item">{{search_result["author"]}}</span>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="item-subtitle">ISBN:</span>
+      <span class="item">{{search_result["isbn"]}}</span>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="item-subtitle">Year:</span>
+      <span class="item">{{search_result["year"]}}</span>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="item-subtitle">Average score:</span>
+      <span class="item">{{search_result["average_score"]}}</span>
+    </div>
+    <div class="col-md-12 col-xs-12 col-lg-12">
+      <span class="item-subtitle">Review count:</span>
+      <span class="item">{{search_result["review_count"]}}</span>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <hr>
+      <div>
+        <span class="subtitle">Reviews:</span>
+      </div>
+      <ol>
+        {% for i in reviews %}
+        <li>
+          <div>Name: {{ i["username"] }}</div>  
+          <div>Score: {{ i["score"] }}</div>  
+          <div>Comment: {{ i["review_comment"] }}</div>  
+        </li>
+        {% endfor %}
+      </ol>
+      <hr>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="subtitle">Leave your comments</div>
+      <br>
+      <form id = "login-form" action="{{ url_for('review')}}" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Score</label>
+            <div class="input-group-btn search-panel">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span id="search_concept">1</span> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#1">1</a></li>
+                <li><a href="#2">2</a></li>
+                <li><a href="#3">3</a></li>
+                <li><a href="#4">4</a></li>
+                <li><a href="#5">5</a></li>
+              </ul>
+            </div>
+            <input type="hidden" name="grade" value="1" id="grade">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Comment</label>
+            <textarea name="comment" class="form-control" placeholder="Any comments?" cols="30" rows="10"></textarea>
+          </div>
+          <button type="submit" class="login-btn">Submit</button>
+      </form>
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="error">
+            {{errorMsg}}
+        </div> 
+    </div>
+  </div>
+  
+</div>
+{% endblock %}

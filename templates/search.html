@@ -1,0 +1,54 @@
+{% extends "layout_after_login.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='search.css')}}">
+{% endblock %}
+    
+{% block body %}
+<script>
+$(document).ready(function(e){
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
+	});
+});
+</script>
+<div class="container" >
+    <div class="row" id = "search-container">    
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <h1 id = "search-greeting">Welcome! {{username}}</h1>
+      </div>
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <div>Please put the keyword there and select the serach type</div>
+      </div>
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <form id = "search-form" action="{{ url_for('search')}}" method="POST">
+          <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span id="search_concept">Filter by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#title">title</a></li>
+                      <li><a href="#author">author</a></li>
+                      <li><a href="#isbn">isbn</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="title" id="search_param">         
+                <input type="text" class="form-control" name="search_keyword" placeholder="Search keywords...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </form>
+      <div>
+        <div class="error">
+            {{errorMsg}}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

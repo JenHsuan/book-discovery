@@ -1,0 +1,115 @@
+body {
+  background-image: url("../static/img/books.png");
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+#page {
+  margin-bottom: 200px; }
+
+#float-navbar {
+  background-color: black;
+  z-index: 1;
+  position: fixed;
+  left: 85%;
+  top: 30%;
+  border-radius: 5px; }
+  #float-navbar a {
+    color: white;
+    width: 150px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px; }
+    #float-navbar a:hover {
+      color: black; }
+  #float-navbar:hover {
+    opacity: 100%; }
+
+#common-footer {
+  background-color: black;
+  margin: 0;
+  padding-bottom: 10px; }
+  #common-footer #copyright {
+    margin-left: 10%;
+    color: white;
+    opacity: 100%;
+    font-weight: 300; }
+  #common-footer #follow {
+    margin-left: 10%;
+    color: white;
+    opacity: 100%;
+    font-weight: 300; }
+    #common-footer #follow span {
+      background-color: white;
+      margin-right: 5px; }
+    #common-footer #follow img {
+      width: 20px;
+      height: 20px; }
+    #common-footer #follow > #text {
+      margin-left: 30px;
+      width: 100px; }
+      #common-footer #follow > #text:hover::after {
+        position: absolute; }
+      #common-footer #follow > #text:hover::after {
+        content: "Click following buttons!";
+        top: -20px;
+        left: -5px;
+        color: black;
+        font-weight: bold; }
+
+.error {
+  color: red;
+  margin-left: 2%;
+  font-size: 16px; }
+
+@media screen and (min-width: 750px) {
+  #float-navbar {
+    display: block; }
+
+  .mobile-navbar {
+    display: none; }
+
+  #common-footer #follow {
+    display: block; } }
+@media screen and (min-width: 600px) and (max-width: 750px) {
+  #float-navbar {
+    display: none; }
+
+  .mobile-navbar {
+    display: block; }
+
+  #common-footer #follow {
+    display: block;
+    margin: 0 auto;
+    float: none; }
+  #common-footer #copyright {
+    margin: 0 auto;
+    float: none; }
+
+  body {
+    background-image: url("../static/img/book-mobile.png"); } }
+@media screen and (max-width: 600px) {
+  #float-navbar {
+    display: none; }
+
+  .mobile-navbar {
+    display: block; }
+
+  #common-footer #follow {
+    display: none; }
+  #common-footer #copyright {
+    margin: 0 auto;
+    float: none;
+    padding-left: 10%; }
+
+  body {
+    background-image: url("../static/img/book-mobile.png"); } }
+.navbar-dark {
+  background-color: black;
+  opacity: 80%; }
+
+/*# sourceMappingURL=common.css.map */
