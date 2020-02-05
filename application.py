@@ -65,8 +65,10 @@ def search():
     else:
         search_param = request.form.get("search_param")
         search_keyword = request.form.get("search_keyword")
-        res = ""
         res = getBook(db, search_param, search_keyword)
+        print(res)
+        if res == {}:
+            return render_template("search_result.html", search_result = {}, reviews = [])
         reviews = get_reviews(db, res["id"])
         initial_book_session(session)
         set_book_session(session, res["id"])
@@ -84,6 +86,7 @@ def review():
     #book_id, user_id, grade, review_comment
     grade = int(request.form.get("grade"))
     comment = request.form.get("comment")
+    print(grade)
     book_id = get_book_session(session)
     user_id = get_user_id(db, session["user"])["id"]
 
