@@ -9,9 +9,9 @@ Web Programming with Python and JavaScript
 3. Comment for a book with the grade. 
 4. Review the previous comments and grades for a book
 5. APIs access:
-- [Get] /api/<isbn>
-- [Get] /api/title/<title>
-- [Get] /api/author/<author>
+- [Get] /api/(isbn)
+- [Get] /api/title/(title)
+- [Get] /api/author/(author)
 ## Technical stack
 * Front-end
 1. Bootstrap
