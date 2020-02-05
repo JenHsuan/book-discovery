@@ -123,30 +123,5 @@ def getBookByAuthor(title):
     #Get books by title from the database
     return jsonify(getFirstBookByTitle(bn, title)), 200
 
-@app.route("/api/review/<book_id>", methods = ["GET"])
-def getReviews(book_id):
-    #Get books by title from the database
-    res = db.execute("select average_score, review_comment, review_count from books where book_id :book_id",
-              {"book_id": book_id}).fetchall()
-              
-    if res == None:
-        return jsonify({}), 200
-    return jsonify(dict(res)), 200
-
-@app.route("/api/review", methods = ["POST"])
-def postReview():
-    book_id = request.form.get("book_id")
-    user_id = request.form.get("user_id")
-    new_score = request.form.get("new_score")
-    review_comment = request.form.get("review_comment")
-          
-    return createNewReview(db, book_id, user_id, new_score, review_comment)
-    
-    
-@app.route("/api/grade", methods = ["GET"])
-def postGrade():
-    #Post new review to the database
-    return
-
 if __name__ == '__main__':
     app.run()
