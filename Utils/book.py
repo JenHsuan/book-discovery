@@ -2,9 +2,44 @@ import os
 import requests
 from flask import jsonify
 
+def getBooks(db, type, keyword):
+    if type == "title":
+        res = getBooksByTitle(db, keyword)
+    elif type == "author":
+        res = getBooksTitleByAuthor(db, keyword)
+    else:
+        res = getBooksTitleByIsbn(db, keyword)
+
+    return res
+
+def getBooksTitleByIsbn(db, isbn):
+    books = db.execute("select id, title, author, year, isbn from books where isbn like :isbn order by title",
+              {"isbn": str(isbn) + '%'}).fetchall()
+    if books == None:
+        return []
+
+    return books
+
+def getBooksTitleByAuthor(db, author):
+    books = db.execute("select id, title, author, year, isbn from books where author like :author order by title",
+              {"author": "%" + str(author) + '%'}).fetchall()
+    if books == None:
+        return []
+
+    return books
+
+def getBooksByTitle(db, title):
+    books = db.execute("select id, title, author, year, isbn from books where title like :title order by title",
+              {"title": "%" + str(title) + '%'}).fetchall()
+    if books == None:
+        return []
+
+    return books
+
 def getBook(db, type, keyword):
     if type == "title":
-        res = getFirstBookByTitle(db, keyword)
+        '''res = getFirstBookByTitle(db, keyword)'''
+        res = getBooksByTitle(db, keyword)
     elif type == "author":
         res = getFirstBookByAuthor(db, keyword)
     else:

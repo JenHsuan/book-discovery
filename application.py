@@ -9,7 +9,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 import requests
 from Utils.register import checkForRestration, createNewAccount
 from Utils.review import createNewReview, get_reviews
-from Utils.book import getBook, getFirstBookByTitle, getFirstBookByAuthor, getFirstBookByIsbn, initial_book_session, is_book_session_empty, set_book_session, get_book_session, reset_book_session
+from Utils.book import getBooks, getBook, getFirstBookByTitle, getFirstBookByAuthor, getFirstBookByIsbn, initial_book_session, is_book_session_empty, set_book_session, get_book_session, reset_book_session
 from Utils.login import checkForLogin
 from Utils.user import initial_session, is_session_empty, set_session, get_session, reset_session, get_user_id
 
@@ -65,16 +65,18 @@ def search():
     else:
         search_param = request.form.get("search_param")
         search_keyword = request.form.get("search_keyword")
-        res = getBook(db, search_param, search_keyword)
-        print(res)
-        if res == {}:
-            return render_template("search_result.html", search_result = {}, reviews = [])
-        reviews = get_reviews(db, res["id"])
-        initial_book_session(session)
-        set_book_session(session, res["id"])
-        return render_template("search_result.html", search_result = res, reviews = reviews)
-
-    
+        res = getBooks(db, search_param, search_keyword)
+        
+        return render_template("search_result_list.html", books = res)
+        
+@app.route("/detail/<string:title>", methods = ["GET"])
+def detail(title):
+    res = getFirstBookByTitle(db, title)
+    initial_book_session(session)
+    set_book_session(session, res["id"])
+    reviews = get_reviews(db, res["id"])
+    return render_template("search_result.html", search_result = res, reviews = reviews)
+            
 @app.route("/logout", methods = ["GET"])
 def logout():
     reset_session(session)
@@ -86,7 +88,6 @@ def review():
     #book_id, user_id, grade, review_comment
     grade = int(request.form.get("grade"))
     comment = request.form.get("comment")
-    print(grade)
     book_id = get_book_session(session)
     user_id = get_user_id(db, session["user"])["id"]
 

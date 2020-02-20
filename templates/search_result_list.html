@@ -1,0 +1,36 @@
+{% extends "layout_after_login.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static', filename='search-result-list.css')}}">
+{% endblock %}
+    
+{% block body %}
+<div class="container">
+  <div class="row" id = "search-result-list-container">    
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <h1 id = "search-result-list-title">
+          Search Results
+        </h1>
+    </div>
+    <ul>
+        {% for i in books %}
+        <li>
+            <a href="{{ url_for('detail' ,title=i.title)}}">{{ i.title }}</a>
+        </li>
+        {% else %}
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <div id="empty-result">No results...</div>
+        </div>
+        {% endfor %}
+    </ul>    
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="error">
+            {{errorMsg}}
+        </div> 
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
