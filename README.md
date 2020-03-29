@@ -12,6 +12,10 @@ Web Programming with Python and JavaScript
 - [Get] /api/(isbn)
 - [Get] /api/title/(title)
 - [Get] /api/author/(author)
+
+## Demo video
+[![Watch the video](https://img.youtube.com/vi/1S00RDStTLQ/hqdefault.jpg)](https://www.youtube.com/watch?v=1S00RDStTLQ)
+
 ## Technical stack
 * Front-end
 1. Bootstrap
