@@ -1,6 +1,6 @@
 Flask
 Flask-Session
-werkzeug==0.15.3
+werkzeug==2.2.3
 psycopg2-binary
 SQLAlchemy
 Flask-Images
